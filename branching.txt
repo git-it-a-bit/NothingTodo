@@ -1,0 +1,168 @@
+// all about branching 
+
+branching : allows to work on multiple things at same time 
+
+                ┌────────────────────────────┐
+                │ 1. Find an Issue           │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │ 2. Fork Repository         │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │ 3. Clone Your Fork         │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │ 4. Add Upstream            │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │ 5. Update Local main       │
+                │ fetch + merge/rebase       │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │ 6. Create Feature Branch   │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │ 7. Make Changes            │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │ 8. git add                 │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │ 9. git commit              │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │10. git push                │
+                └────────────┬───────────────┘
+                             │
+                             ▼
+                ┌────────────────────────────┐
+                │11. Open Pull Request       │
+                └────────────┬───────────────┘
+                             │
+                ┌────────────┴───────────────┐
+                │                            │
+                ▼                            ▼
+        No conflicts                  Merge conflicts
+                │                            │
+                │                            ▼
+                │              ┌────────────────────────────┐
+                │              │ Update feature branch      │
+                │              │ from latest main           │
+                │              └────────────┬───────────────┘
+                │                           │
+                │                           ▼
+                │              git fetch upstream
+                │              git switch main
+                │              git merge upstream/main
+                │              git switch feature
+                │              git merge main
+                │                     OR
+                │              git rebase main
+                │                           │
+                │                           ▼
+                │              Resolve conflicts manually
+                │                           │
+                │                           ▼
+                │              git add <resolved files>
+                │                           │
+                │                           ▼
+                │          merge:  git commit
+                │          rebase: git rebase --continue
+                │                           │
+                │                           ▼
+                │                  git push
+                │           (force-with-lease if rebased)
+                │                           │
+                └───────────────┬───────────┘
+                                ▼
+                   Maintainer reviews PR
+                                │
+                                ▼
+                   Review comments?
+                                │
+                       Yes              No
+                        │                │
+                        ▼                ▼
+              Make requested changes   Merge PR
+                        │                │
+                        ▼                ▼
+                 git add / commit       Done 🎉
+                 git push
+
+
+# Clone
+git clone <url>
+cd repo
+
+# Configure remotes
+git remote -v
+git remote add upstream <original-url>
+
+# Sync main
+git switch main
+git fetch upstream
+git merge upstream/main
+git push origin main
+
+# Create feature branch
+git switch -c feature-name
+
+# Work
+git status
+git diff
+git add .
+git commit -m "Meaningful message"
+
+# Push
+git push -u origin feature-name
+
+# Update branch before merge
+git fetch upstream
+git switch main
+git merge upstream/main
+git switch feature-name
+git merge main
+
+# OR
+git rebase main
+
+# Resolve conflicts
+git status
+git add <file>
+
+# Finish merge
+git commit
+
+# OR finish rebase
+git rebase --continue
+
+# Push updated branch
+git push
+# OR
+git push --force-with-lease
+
+# Cleanup
+git switch main
+git fetch upstream
+git merge upstream/main
+git push origin main
+git branch -d feature-name
+git push origin --delete feature-name
