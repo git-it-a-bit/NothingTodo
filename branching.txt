@@ -1,0 +1,3 @@
+// all about branching 
+
+branching : allows to work on multiple things at same time 
