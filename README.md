@@ -1,9 +1,3 @@
 # NothingTodo
 
-// Writing this to check the diff methode
-// adding something using conflict2
-
-
-// Adding one more line
-// adding 2nd line again
-
+// what does -u do ? Instead of typing git push origin main every single time, you can simply type git push or git pull on that branch.
