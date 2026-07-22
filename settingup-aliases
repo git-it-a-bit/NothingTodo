@@ -1,0 +1,16 @@
+
+$ git config --global alias.cm "commit -m"
+
+$ git config --global alias.co "checkout"
+
+$ git config --global alias.s "status"
+
+dixdi@Dixit MINGW64 ~/desktop/NothingTodo (main)
+$ git s
+On branch main
+Your branch is up to date with 'origin/main'.
+
+nothing to commit, working tree clean
+
+dixdi@Dixit MINGW64 ~/desktop/NothingTodo (main)
+$ git config --global alias.lag "log --all --graph"
