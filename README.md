@@ -35,5 +35,13 @@ to change the commit message or add some left out change to the latest commit 1.
 
 ---
 
-// we can use the branch arrow on lhs to see what changes we have made to code, which one have been stages and which we are currently working on.
-![alt text](image.png)
+    // we can use the branch arrow on lhs to see what changes we have made to code, which one have been stages and which we are currently working on.
+    ![alt text](image.png)
+
+---
+
+    // taking a file/folder out of staging area :
+
+    git reset file/folder_name
+
+---
