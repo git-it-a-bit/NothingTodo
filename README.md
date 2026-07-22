@@ -44,3 +44,10 @@ to change the commit message or add some left out change to the latest commit 1.
     git reset file/folder_name
 
 ---
+
+    // how to move/visit older versions of code
+
+    git checkout <hash_of_commit>
+    // it shows the code that existed before this commit
+
+---
