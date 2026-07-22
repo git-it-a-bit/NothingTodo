@@ -68,3 +68,6 @@ to change the commit message or add some left out change to the latest commit 1.
     https://youtu.be/hrTQipWp6co?si=KBUH--kxm09vQ8PW
 
 ---
+
+how to remove git from ur folder
+    rm -rf .git
