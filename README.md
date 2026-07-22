@@ -51,3 +51,5 @@ to change the commit message or add some left out change to the latest commit 1.
     // it shows the code that existed before this commit
 
 ---
+
+![alt text](image-1.png)
