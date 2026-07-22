@@ -44,8 +44,13 @@ to change the commit message or add some left out change to the latest commit 1.
     git reset file/folder_name
 
 ---
+
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 =======
+=======
+
+> > > > > > > 0d42158be48732f136397907e485ec2f6a8b5d94
 
     // how to move/visit older versions of code
 
@@ -63,4 +68,3 @@ to change the commit message or add some left out change to the latest commit 1.
     https://youtu.be/hrTQipWp6co?si=KBUH--kxm09vQ8PW
 
 ---
->>>>>>> Stashed changes
