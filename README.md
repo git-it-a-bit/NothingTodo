@@ -70,4 +70,6 @@ to change the commit message or add some left out change to the latest commit 1.
 ---
 
 how to remove git from ur folder
+--------------------------------------
     rm -rf .git
+-------------------------------------
