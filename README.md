@@ -44,3 +44,23 @@ to change the commit message or add some left out change to the latest commit 1.
     git reset file/folder_name
 
 ---
+<<<<<<< Updated upstream
+=======
+
+    // how to move/visit older versions of code
+
+    git checkout <hash_of_commit>
+    // it shows the code that existed before this commit
+
+---
+
+![alt text](image-1.png)
+
+## // Best revise versioning from here"
+
+---
+
+    https://youtu.be/hrTQipWp6co?si=KBUH--kxm09vQ8PW
+
+---
+>>>>>>> Stashed changes
