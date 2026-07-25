@@ -55,3 +55,59 @@ git revert <commit-hash>
 #C) Restoring deleted commits
 
 # git reflog
+
+---
+
+    Scenario 1: Recover after git reset --hard
+    Original history
+    A ---- B ---- C (HEAD)
+    git reset --hard A
+    A (HEAD)
+    You panic because B and C disappeared.
+    git reflog
+    HEAD@{0}: reset: moving to A
+    HEAD@{1}: commit: C
+    HEAD@{2}: commit: B
+
+    Recover:
+    git reset --hard HEAD@{1}
+    or
+    git reset --hard <hash-of-C>
+
+    History is restored:
+    A ---- B ---- C
+
+---
+
+    Scenario 2: Recover a deleted branch
+
+    Suppose
+
+    main
+    A ---- B
+
+    feature
+        \
+        C ---- D
+
+    You delete feature
+
+    git branch -D feature
+
+    The branch disappears. But
+
+    git reflog
+
+    may contain
+
+    checkout: moving from feature to main
+    commit: D
+    commit: C
+
+    Now recreate it
+
+    git branch feature <hash-of-D>
+
+    Recovered.
+
+---
