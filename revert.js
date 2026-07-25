@@ -1,1 +1,3 @@
-console.log("D");
+console.log("a");
+console.log("b");
+console.log("c");
