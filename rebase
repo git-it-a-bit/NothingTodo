@@ -1,0 +1,7 @@
+#rebase: git rebase -i (interactive rebase) lets you edit, reorder, combine, split, drop, or reword commits. It's one of the most powerful Git commands for cleaning up commit history before sharing it.
+
+1. git rebase -i <hash/head~n>
+2. vim is opened, press i to enter interactive mode
+3. use commands to do what u want to do with commits
+4. esc, shift wq
+5. git rebase --continue
