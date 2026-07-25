@@ -109,3 +109,7 @@
 
 # moving a commit to a new branch ( not an existing one)
 
+        git branch new_branch
+        git reset --hard HEAD~1
+        git checkout new_branch
+        git log --all
