@@ -18,7 +18,7 @@ B) Undoing local committed changes
 
 1. Fixing the last commit ( using amend)
 
-2. 
+2.  Using git revert 
 
 
 
