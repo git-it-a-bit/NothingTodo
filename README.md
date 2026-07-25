@@ -6,7 +6,7 @@
 
 ## // git log --all --graph
 
-// --amend :( it rewrites history so dont use on pushed commits)
+// --amend :
 
 to change the commit message or add some left out change to the latest commit 1. Change the last commit message or Change both the files and the commit message
 
