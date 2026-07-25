@@ -109,12 +109,3 @@
 
 # moving a commit to a new branch ( not an existing one)
 
----
-
-        git branch new_branch
-        git reset --hard <commit-hash>
-        git checkout new_branch
-        git add .
-        git commit -m "commit moved  to new branch"
-
----
