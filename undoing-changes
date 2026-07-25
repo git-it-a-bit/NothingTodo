@@ -18,7 +18,14 @@ B) Undoing local committed changes
 
 1. Fixing the last commit ( using amend)
 
-2.  Using git revert 
+2.  Using git revert( it doesnt change the old commit hostory)
+----------------------------------------
+    git revert <commit-hash>
 
+    //it will revert only those changes introduced by the commit, if merge conflicts ,will ask to resolve
 
-
+---------------------------------------
+3. using git reset( to remove some coomits as if they never were made, excluding the hash of commit we use)
+-----------------------------------------
+  git reset --hard <commit-hash>
+-----------------------------------------
