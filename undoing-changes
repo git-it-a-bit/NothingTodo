@@ -1,0 +1,24 @@
+A) Undoing local uncommitted changes
+
+1. undoing the local changes that has not been committed yet
+---------------------------------------------------
+    git restore <file_name>
+---------------------------------------------------
+2. restoring deleted file
+---------------------------------------------------
+    git restore <file_name>
+---------------------------------------------------
+3. to view changes in a file
+---------------------------------------------------
+    git diff <file_name>
+---------------------------------------------------
+
+
+B) Undoing local committed changes
+
+1. Fixing the last commit ( using amend)
+
+2. 
+
+
+
