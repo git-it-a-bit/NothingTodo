@@ -1,31 +1,57 @@
-A) Undoing local uncommitted changes
+# A) Undoing local uncommitted changes
 
 1. undoing the local changes that has not been committed yet
----------------------------------------------------
+
+---
+
     git restore <file_name>
----------------------------------------------------
+
+---
+
 2. restoring deleted file
----------------------------------------------------
+
+---
+
     git restore <file_name>
----------------------------------------------------
+
+---
+
 3. to view changes in a file
----------------------------------------------------
+
+---
+
     git diff <file_name>
----------------------------------------------------
 
+---
 
-B) Undoing local committed changes
+# B) Undoing local committed changes
 
 1. Fixing the last commit ( using amend)
 
-2.  Using git revert( it doesnt change the old commit hostory)
-----------------------------------------
-    git revert <commit-hash>
+2. Using git revert( it doesnt change the old commit hostory)
 
-    //it will revert only those changes introduced by the commit, if merge conflicts ,will ask to resolve
+---
 
----------------------------------------
+git revert <commit-hash>
+
+//it will revert only those changes introduced by the commit, if merge conflicts ,will ask to resolve
+
+---
+
 3. using git reset( to remove some coomits as if they never were made, excluding the hash of commit we use)
------------------------------------------
-  git reset --hard <commit-hash>
------------------------------------------
+
+---
+
+## git reset --hard <commit-hash>
+
+4. Reseting a file to an old version
+
+---
+
+     git restore --source <hash-of-coomit> <file_name>
+
+---
+
+#C) Restoring deleted commits
+
+# git reflog
