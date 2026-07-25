@@ -1,0 +1,108 @@
+    Let's assume:
+
+    main
+    │
+    └── git-revert
+            │
+            └── sub_git_revert (HEAD)
+                    \
+                    A   ← This commit should have been on git-revert
+
+    You accidentally committed A on sub_git_revert, but you wanted it on git-revert.
+
+    Case 1: The commit has NOT been pushed (most common)
+
+    Suppose A is the latest (and only accidental) commit on sub_git_revert.
+
+    Step 1: Save the commit hash
+    git log --oneline
+
+    Example:
+
+    abc1234 Fix login bug   <-- A
+    def5678 Previous commit
+
+    Copy abc1234.
+
+    Step 2: Switch to the correct branch
+    git switch git-revert
+    Step 3: Cherry-pick the commit
+    git cherry-pick abc1234
+
+    Now your history looks like:
+
+    main
+    │
+    └── git-revert
+            │
+            ├── A
+            │
+            └── sub_git_revert
+                \
+                    A
+
+    The same changes now exist on both branches (with different commit hashes).
+
+    Step 4: Remove it from sub_git_revert
+
+    Switch back:
+
+    git switch sub_git_revert
+
+    Reset one commit:
+
+    git reset --hard HEAD~1
+
+    Final result:
+
+    main
+    │
+    └── git-revert
+            │
+            ├── A
+            │
+            └── sub_git_revert
+
+    Exactly what you wanted.
+
+    Case 2: The commit HAS already been pushed
+
+    If other people may have pulled the branch, avoid rewriting its history.
+
+    Instead:
+
+    Cherry-pick onto git-revert:
+    git switch git-revert
+    git cherry-pick abc1234
+    Go back to sub_git_revert:
+    git switch sub_git_revert
+    Revert the accidental commit:
+    git revert abc1234
+
+    Now the history records both the accidental commit and the fact that it was undone, making it safe for shared branches.
+
+    Case 3: The accidental commit is the most recent commit and no one has pulled it
+
+    There's an even quicker method using git reset:
+
+    On sub_git_revert:
+
+    git reset --soft HEAD~1
+
+    This removes the commit but leaves all its changes staged.
+
+    Now switch branches:
+
+    git switch git-revert
+
+    If Git refuses because the staged changes would conflict, you can instead stash them:
+
+    git stash
+    git switch git-revert
+    git stash pop
+
+    or use the first (cherry-pick) method, which is generally simpler and safer.
+
+    Finally:
+
+    git commit -m "Your commit message"
