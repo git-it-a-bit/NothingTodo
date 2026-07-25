@@ -52,6 +52,6 @@ git revert <commit-hash>
 
 ---
 
-#C) Restoring deleted commits
+# C) Restoring deleted commits
 
 # git reflog
