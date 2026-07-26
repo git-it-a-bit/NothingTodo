@@ -1,0 +1,124 @@
+# 1. using --amend ( changing the commit directly)
+
+---
+
+    Suppose your history is:
+
+    A
+    B
+    C
+    D
+    E  ← HEAD
+
+    You want to add changes to commit C.You'll use interactive rebase.
+
+    git rebase -i HEAD~3
+
+    pick C
+    pick D
+    pick E
+
+    Change it to:
+
+    edit C
+    pick D
+    pick E
+
+    Save and exit.
+
+    Git rewinds history and stops at C.
+
+    Step 2: Make your changes
+
+    Edit the files.
+
+    Stage them:
+
+    git add .
+    git commit --amend
+
+    or
+    git commit --amend --no-edit
+    Step 4: Continue the rebase
+    git rebase --continue
+
+    Git will replay D and E on top of the updated C.
+    Final history:
+
+    A
+    B
+    C'
+    D'
+    E'
+
+    Notice that C, D, and E all get new commit hashes, because changing C changes the history that follows it.
+
+---
+
+# 2. Using --fixup and autosquash(creating a new commit which squashes into our old one)
+
+---
+
+    Step 1: Make the changes
+    # edit auth.js
+    git add auth.js
+    Step 2: Create a fixup commit
+    git commit --fixup <hash-of-C>
+
+    Suppose C's hash is a1b2c3:
+
+    git commit --fixup a1b2c3
+
+    Git creates a new commit like:
+
+    fixup! Add login page
+
+    History becomes:
+
+    A
+    B
+    C
+    D
+    E
+    F  fixup! Add login page
+
+    Notice that nothing has been rewritten yet. You've simply added a new commit.
+
+    Step 3: Autosquash
+
+    Run:
+
+    git rebase -i --autosquash HEAD~4
+
+    Git automatically changes the rebase plan from:
+
+    pick C
+    pick D
+    pick E
+    pick fixup! Add login page
+
+    to:
+
+    pick C
+    fixup fixup! Add login page
+    pick D
+    pick E
+
+    You don't have to move the fixup commit manually.
+
+    Save and exit.
+
+    Result:
+
+    A
+    B
+    C'
+    D'
+    E'
+
+    The changes from F are folded into C, and the fixup! commit disappears.
+
+    # Update the remote branch if you've already pushed
+    git push --force-with-lease
+
+---
